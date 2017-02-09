@@ -1,20 +1,24 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
+import { JobFeedService } from '../../providers/job-feed-service'
 
-/*
-  Generated class for the JobFeed page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-job-feed',
+  providers : [JobFeedService],
   templateUrl: 'jobFeedPage.html'
 })
 export class JobFeedPage {
- 
-  data : any;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+  data: any;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private jobService: JobFeedService,
+    private loader: LoadingController) {
+
+    let loadingUI = this.loader.create({ content: 'Please wait ...' });
+    loadingUI.present();
+    this.jobService.getFeed().then(data => {
+      this.data = data;
+      loadingUI.dismiss();
+    });
   }
 
   ionViewDidLoad() {
