@@ -9,11 +9,13 @@ import { NavController, NavParams } from 'ionic-angular';
 */
 @Component({
   selector: 'page-job-feed',
-  templateUrl: 'job-feed.html'
+  templateUrl: 'jobFeedPage.html'
 })
 export class JobFeedPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+ 
+  data : any;
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad JobFeedPage');

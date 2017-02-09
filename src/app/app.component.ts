@@ -4,28 +4,29 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { Page1 } from '../pages/page1/page1';
 import { Page2 } from '../pages/page2/page2';
-import { JobFeedPage } from "../pages/job-feed/job-feed"
+import { JobPage } from "../pages/jobPage/jobPage"
+import { SettingsPage } from '../pages/settings/settings'
 
 @Component({
   templateUrl: 'app.html'
 })
+
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-
-  rootPage: any = Page1;
-
-  pages: Array<{title: string, component: any}>;
+  rootPage: any = JobPage;
+  pages: Array<{ title: string, component: any, icon: string }>;
 
   constructor(public platform: Platform) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Job Feed', component: JobFeedPage },
-      { title: 'Page One', component: Page1 },
-      { title: 'Page Two', component: Page2 }
-    ];
+      { title: 'Home', component: JobPage, icon: 'md-home' },
+      //    { title: 'My Profile', component: ProfilePage, icon : 'md-person' },
+      { title: 'Messages', component: JobPage, icon: 'md-mail' },
+      { title: 'Settings', component: SettingsPage, icon: 'md-options' }
 
+    ];
   }
 
   initializeApp() {
