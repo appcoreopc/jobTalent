@@ -1,11 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
-
-import { Page1 } from '../pages/page1/page1';
-import { Page2 } from '../pages/page2/page2';
 import { JobPage } from "../pages/jobPage/jobPage"
 import { SettingsPage } from '../pages/settings/settings'
+import { AppointmentPage } from "../pages/jobPage/appointmentPage"
+
 
 @Component({
   templateUrl: 'app.html'
@@ -25,6 +24,7 @@ export class MyApp {
       //    { title: 'My Profile', component: ProfilePage, icon : 'md-person' },
       { title: 'Messages', component: JobPage, icon: 'md-mail' },
       { title: 'Feed Filter', component: JobPage, icon: 'md-star-outline' },
+      { title: 'Appointments', component: AppointmentPage, icon: 'md-calendar' },
       { title: 'Settings', component: SettingsPage, icon: 'md-options' }
     ];
   }
