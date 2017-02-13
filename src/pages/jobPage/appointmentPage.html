@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Appointments</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+
+  <ion-card *ngFor="let item of data">
+    <ion-item>
+      <ion-avatar item-left>
+        <img src="{{item.images}}">
+      </ion-avatar>
+      <h2 (click)='loadDetail(item)'>{{item?.name}}</h2>
+      <p (click)='loadDetail(item)'>{{item?.title}}</p>
+      <p (click)='loadDetail(item)'>Skill:{{item?.skill}}</p>
+    </ion-item>
+    <ion-card-content>
+      <p (click)='loadDetail(item)'>{{item?.experience}}.</p>
+    </ion-card-content>
+
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-left clear small>
+        <ion-icon name="thumbs-up"></ion-icon>
+        <div>{{item?.date}}</div>
+      </button>
+      </ion-col>
+      
+    </ion-row>
+
+  </ion-card>
+
+</ion-content>
