@@ -3,44 +3,53 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Talent Page</ion-title>
+    <ion-title>Talents</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+
   <ion-card *ngFor="let item of data">
     <ion-item>
       <ion-avatar item-left>
         <img src="{{item.images}}">
       </ion-avatar>
-      <h2 (click)='loadDetail(item)'>{{item?.title}}</h2>
-      <p (click)='loadDetail(item)'>{{item?.description}}</p>
+      <h2 (click)='loadDetail(item)'>{{item?.name}}</h2>
+      <p (click)='loadDetail(item)'>{{item?.title}}</p>
+      <p (click)='loadDetail(item)'>Skill:{{item?.skill}}</p>
     </ion-item>
     <ion-card-content>
-      <p (click)='loadDetail(item)'>{{item?.details}}.</p>
+      <p (click)='loadDetail(item)'>{{item?.experience}}.</p>
     </ion-card-content>
 
     <ion-row>
       <ion-col>
         <button ion-button icon-left clear small>
         <ion-icon name="thumbs-up"></ion-icon>
-        <div>12 Likes</div>
+        <div>{{item?.status}}</div>
       </button>
       </ion-col>
       <ion-col>
         <button ion-button icon-left clear small>
-        <ion-icon name="text"></ion-icon>
-        <div>4 Comments</div>
+        <ion-icon name="md-pin"></ion-icon>
+        <div>{{item?.location}}</div>
       </button>
       </ion-col>
+
+      <ion-col>
+        <button ion-button icon-left clear small>
+        <ion-icon name="ios-mail"></ion-icon>
+        <div>Contact</div>
+      </button>
+      </ion-col>
+
       <ion-col center text-center>
-        <ion-note>
-          11h ago
-        </ion-note>
+        <ion-icon name="ios-more"></ion-icon>
       </ion-col>
     </ion-row>
 
   </ion-card>
-
 
 </ion-content>

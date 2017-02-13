@@ -24,8 +24,8 @@ export class MyApp {
       { title: 'Home', component: JobPage, icon: 'md-home' },
       //    { title: 'My Profile', component: ProfilePage, icon : 'md-person' },
       { title: 'Messages', component: JobPage, icon: 'md-mail' },
+      { title: 'Feed Filter', component: JobPage, icon: 'md-star-outline' },
       { title: 'Settings', component: SettingsPage, icon: 'md-options' }
-
     ];
   }
 
