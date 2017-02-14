@@ -10,7 +10,8 @@
 
 <ion-content padding>
   <ion-item>
-    <h1> {{monthString}}, {{dayString}} </h1>
+    <h1>
+      <ion-icon name="md-calendar"></ion-icon> {{monthString}}, {{dayString}} </h1>
   </ion-item>
 
   <ion-card *ngFor="let item of data">
