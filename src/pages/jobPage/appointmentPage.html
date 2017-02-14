@@ -3,37 +3,38 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Appointments</ion-title>
+    <ion-title>
+      Appointments</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-
-  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  <ion-item>
+    <h1> {{monthString}}, {{dayString}} </h1>
+  </ion-item>
 
   <ion-card *ngFor="let item of data">
     <ion-item>
       <ion-avatar item-left>
         <img src="{{item.images}}">
       </ion-avatar>
-      <h2 (click)='loadDetail(item)'>{{item?.name}}</h2>
-      <p (click)='loadDetail(item)'>{{item?.title}}</p>
-      <p (click)='loadDetail(item)'>Skill:{{item?.skill}}</p>
+      <h2 (click)='loadDetail(item)'>{{item?.name}} for {{item?.positionFor}}</h2>
+      <ion-note class="note note-md">
+        {{item?.title}}
+      </ion-note>
+      <ion-note class="note note-md">
+        Skills : {{item?.skill}}</ion-note>
+      <p>
+        <ion-icon name="md-pin"></ion-icon>{{item?.location}}</p>
     </ion-item>
     <ion-card-content>
-      <p (click)='loadDetail(item)'>{{item?.experience}}.</p>
-    </ion-card-content>
 
+      <p (click)='loadDetail(item)'>{{item?.experience}}.</p>
+
+    </ion-card-content>
     <ion-row>
       <ion-col>
-        <button ion-button icon-left clear small>
-        <ion-icon name="md-alarm"></ion-icon>
-        <div>{{item?.date}}</div>
-      </button>
       </ion-col>
-      
     </ion-row>
-
   </ion-card>
-
 </ion-content>

@@ -12,8 +12,15 @@ export class AppointmentPage {
   data: any;
   cacheData: any;
 
+  monthString: string; 
+  dayString : string; 
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private jobService: JobFeedService,
     private loader: LoadingController) {
+
+    var currentDate = this.getDateObject();
+    this.monthString = currentDate.monthName;
+    this.dayString = currentDate.day;
 
     let loadingUI = this.loader.create({ content: 'Please wait ...' });
     loadingUI.present();
@@ -22,7 +29,44 @@ export class AppointmentPage {
       this.cacheData = JSON.parse(JSON.stringify(this.data));
       loadingUI.dismiss();
     });
+
+
+
   }
+
+
+  getDateObject(): any {
+
+    var DateObject = (function () {
+      var monthNames = [
+        "January", "February", "March",
+        "April", "May", "June", "July",
+        "August", "September", "October",
+        "November", "December"
+      ];
+      var date = function (str) {
+        this.set(str);
+      };
+      date.prototype = {
+        set: function (str) {
+          var dateDef = str ? new Date(str) : new Date();
+          this.day = dateDef.getDate();
+          this.dayPadded = (this.day < 10) ? ("0" + this.day) : "" + this.day;
+          this.month = dateDef.getMonth() + 1;
+          this.monthPadded = (this.month < 10) ? ("0" + this.month) : "" + this.month;
+          this.monthName = monthNames[this.month - 1];
+          this.year = dateDef.getFullYear();
+        }
+      };
+      return date;
+    })();
+
+    return new DateObject('');
+  }
+
+
+
+
 
   ionViewDidLoad() {
   }
